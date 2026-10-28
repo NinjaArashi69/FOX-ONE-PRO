@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GENERATE YOUR KEY| FOX ONE</title>
+    <title>GENERATE YOUR KEY| FOX ONE PRO</title>
     <style>
         :root { 
             --bg: #000000; 
@@ -28,8 +28,6 @@
             align-items: center; 
             min-height: 100vh; 
             padding: 20px;
-            user-select: none; 
-            -webkit-user-select: none;
         }
 
         .container { 
@@ -39,7 +37,9 @@
             animation: fadeIn 0.8s ease-out;
         }
 
-        .header { margin-bottom: 32px; }
+        .header {
+            margin-bottom: 32px;
+        }
 
         .logo-circle { 
             width: 88px; 
@@ -55,7 +55,11 @@
             box-shadow: 0 0 30px rgba(0, 255, 127, 0.15);
         }
 
-        .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         h1 { 
             font-size: 32px; 
@@ -181,7 +185,9 @@
             min-width: 24px;
         }
 
-        .warning-content { text-align: left; }
+        .warning-content {
+            text-align: left;
+        }
 
         .warning-title {
             color: var(--warning-text);
@@ -250,11 +256,15 @@
 <body>
 
 <div class="container">
+    
     <div class="header">
-        <div class="logo-circle"><img src="./assets/logo.png" alt="FOXONE"></div>
-        <h1>FOX ONE</h1>
+        <div class="logo-circle">
+            <img src="./assets/logo.png" alt="FOXONE">
+        </div>
+        <h1>FOX ONE PRO</h1>
         <p class="subtitle">GENARATE YOUR KEY</p>
     </div>
+
     <div class="progress-container">
         <div class="step-indicator">
             <div class="circle active">1</div>
@@ -263,15 +273,18 @@
         <div class="line"></div>
         <div class="circle">✓</div>
     </div>
+
     <div class="card">
         <h2>Complete Step 1</h2>
         <p class="card-p">Click the button below to continue. Your key will be valid for 24 hours and locked to your device.</p>
+
         <div class="features">
             <div class="feature">Valid for 24 hours</div>
             <div class="feature">1 verification step</div>
             <div class="feature">Device-locked key</div>
             <div class="feature">Auto-saved in app</div>
         </div>
+
         <div class="warning">
             <div class="warning-icon">⚠️</div>
             <div class="warning-content">
@@ -279,65 +292,29 @@
                 <div class="warning-text">The use of bots or automation will result in your key being banned.</div>
             </div>
         </div>
-        <button class="btn" id="continueBtn" onclick="continueToStep()">CONTINUE TO STEP →</button>
+
+        <button class="btn" id="continueBtn" onclick="continueToStep()">
+            CONTINUE TO STEP →
+        </button>
     </div>
+
     <div class="footer"></div>
+
 </div>
 
 <script>
-    // --- SECURITY: Disable Right Click & DevTools ---
-    document.addEventListener('contextmenu', event => event.preventDefault());
-    document.onkeydown = function(e) {
-        if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0)))) {
-            return false;
-        }
-    };
-
-    // --- SECURITY: Prevent Text/Link Modification ---
-    setInterval(() => {
-        const btn = document.getElementById('continueBtn');
-        if(btn && btn.innerText !== "CONTINUE TO STEP →" && btn.innerText !== "REDIRECTING...") {
-            btn.innerText = "CONTINUE TO STEP →"; // Reset if someone changes it
-        }
-    }, 1000);
-
-    // --- Anti-Bot Check ---
-    if (navigator.webdriver) {
-        document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:50px;'>Automation Detected. Access Denied.</h1>";
-    }
-
-    // --- Function to Generate a Unique Token ---
-    function generateToken() {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        let token = "";
-        for (let i = 0; i < 16; i++) {
-            token += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return token;
-    }
-
     function continueToStep() {
         const btn = document.getElementById('continueBtn');
         btn.disabled = true;
         btn.innerText = 'REDIRECTING...';
 
-        // Generate a token and save it in localStorage
-        const token = generateToken();
-        localStorage.setItem('fox_token', token);
-
-        // Base URL for vplinks (তোর নতুন লিংক এখানে বসানো হয়েছে)
-        const baseUrl = 'https://vplinks.in/iPuWk2';
+        const vpLinkUrl = 'https://vplinks.in/WyIaTm';
         
-        // Append token to URL (optional, but good for tracking)
-        const finalUrl = baseUrl + '?token=' + token;
-
         setTimeout(() => {
-            // Use location.replace so they can't go back and modify
-            window.location.replace(finalUrl);
+            window.location.href = vpLinkUrl;
         }, 500);
     }
 
-    // Prevent user from tampering with the page by going back
     window.addEventListener('focus', () => {
         const btn = document.getElementById('continueBtn');
         if (btn.disabled) {
@@ -354,5 +331,6 @@
         }
     });
 </script>
+
 </body>
 </html>
